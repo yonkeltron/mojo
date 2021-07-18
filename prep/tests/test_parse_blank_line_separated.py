@@ -20,7 +20,7 @@ def test_chunk_to_haiku_attrs(chunk) -> None:
 
 
 def test_collection_from_raw(chunk) -> None:
-    raw = f"{chunk}\n\n{chunk}\n\n{chunk}\n"
+    raw = f"{chunk}\n\n\n{chunk}\n\n{chunk}\n"
 
     collection = collection_from_raw("bogus name", "bogus url", raw)
 
