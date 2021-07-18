@@ -43,7 +43,6 @@ def to_class(c: Type[T], x: Any) -> dict:
 class HaikuElement:
     """The poem body, expressed as a collection of lines"""
     lines: List[str]
-    source: str
     """A UUID to uniquely identify the sample"""
     uuid: UUID
 
@@ -51,14 +50,12 @@ class HaikuElement:
     def from_dict(obj: Any) -> 'HaikuElement':
         assert isinstance(obj, dict)
         lines = from_list(from_str, obj.get("lines"))
-        source = from_str(obj.get("source"))
         uuid = UUID(obj.get("uuid"))
-        return HaikuElement(lines, source, uuid)
+        return HaikuElement(lines, uuid)
 
     def to_dict(self) -> dict:
         result: dict = {}
         result["lines"] = from_list(from_str, self.lines)
-        result["source"] = from_str(self.source)
         result["uuid"] = str(self.uuid)
         return result
 
