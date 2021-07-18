@@ -1,0 +1,60 @@
+{
+  "$id": "Collection",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["name", "samples", "url", "uuid", "writtenAt"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "samples": {
+      "type": "array",
+      "description": "The samples composing the collection",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Haiku"
+      }
+    },
+    "writtenAt": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "$defs": {
+    "Haiku": {
+      "type": "object",
+      "required": ["uuid", "lines", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "A UUID to uniquely identify the sample",
+          "format": "uuid"
+        },
+        "lines": {
+          "type": "array",
+          "description": "The poem body, expressed as a collection of lines",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 5
+        }
+      }
+    }
+  }
+}
