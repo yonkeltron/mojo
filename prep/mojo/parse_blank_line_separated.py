@@ -2,10 +2,8 @@ from datetime import datetime
 from typing import Any, Dict
 import uuid
 
-from mojo.collection import Collection, HaikuElement
 
-
-def collection_from_raw(name: str, url: str, raw: str) -> Collection:
+def collection_from_raw(name: str, url: str, raw: str) -> Dict[str, Any]:
     raw_chunks = raw.split("\n\n")
     stripped_chunks = [chunk.strip() for chunk in raw_chunks]
     non_blank_chunks = filter(lambda chunk: chunk != "", stripped_chunks)
@@ -20,7 +18,7 @@ def collection_from_raw(name: str, url: str, raw: str) -> Collection:
         "writtenAt": str(datetime.now()),
     }
 
-    return Collection.from_dict(attrs)
+    return attrs
 
 
 def chunk_to_haiku_attrs(chunk: str) -> Dict[str, Any]:
