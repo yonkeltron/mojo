@@ -20,6 +20,9 @@ tox = "^3.24.0"
 types-python-dateutil = "^0.1.4"
 bandit = "^1.7.0"
 
+[tool.poetry.scripts]
+mojo = "mojo.cli:app"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
