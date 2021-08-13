@@ -1,6 +1,5 @@
 import json
 import logging
-from mojo.collection import collection_from_dict, collection_to_dict
 
 from mojo.parse_blank_line_separated import collection_from_raw
 
