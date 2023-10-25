@@ -23,6 +23,5 @@ def test_collection_from_raw(chunk) -> None:
 
     collection = collection_from_raw("bogus name", "bogus url", raw)
 
-    assert collection["haiku"][0]["lines"] == chunk_to_haiku_attrs(chunk)[
-        "lines"]
+    assert collection["haiku"][0]["lines"] == chunk_to_haiku_attrs(chunk)["lines"]
     assert len(collection["haiku"]) == 3
